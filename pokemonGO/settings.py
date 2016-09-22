@@ -122,5 +122,5 @@ if DEBUG:
     STATIC_URL = '/static/'
     #STATIC_ROOT = '/home/mcnuggets23/pokemonGO/static'
 else:
-    STATIC_URL = '/static/'
     STATIC_ROOT = '/home/mcnuggets23/pokemonGO/static'
+    STATIC_URL = '/static/'
