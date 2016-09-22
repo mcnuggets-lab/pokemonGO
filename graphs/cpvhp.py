@@ -41,6 +41,8 @@ try:
         type_colors.append(type_dict[data["Type 1"][i]])
 
 except:
+    import os
+    print(os.path.dirname(os.path.realpath(__file__)))
     print("Cannot load excel file.")
     names = []
     types = []
