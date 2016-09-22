@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% load staticfiles %}
+    <title>{{ title }}</title>
+
+    <meta name="description" content="{{ title }}">
+    <meta name="keywords" content="pokemonGO">
+    <meta name="author" content="McNuggets-Lab">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <link rel='stylesheet' href="{% static 'maths/stylesheets/style.css' %}" />
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>{{ title }}</h3>
+                <div id="chart" style="height:640px; width:640px;"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="{% static 'common/javascripts/he.js' %}"></script>
+
+    <!--<script src="{% static 'common/javascripts/ajax_csrf_setup.js' %}"></script>
+    <script src="{% static 'maths/javascripts/prseq_kernel.js' %}"></script>-->
+
+    <script type="text/javascript">
+
+        "use strict"
+
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+
+
+        var names = eval(he.decode('{{ data.names }}'));
+        var types = eval(he.decode('{{ data.types }}'));
+        var typeColors = eval(he.decode('{{ data.typeColors }}'));
+        var mcp = {{ data.mcp }};
+        var mhp = {{ data.mhp }};
+
+
+
+        function tooltipDisplay(name, type, CP, HP) {
+            return '<div style="width:130px;font-size:16px;font-weight:bold;padding-left:5px;">' 
+                + name + '<br/>'
+                + 'Type: ' + type + '<br/>'
+                + 'max CP: ' + CP + '<br/>' 
+                + 'max HP: ' + HP + '</div>';
+        }
+
+        function drawChart() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'max CP');
+            data.addColumn('number', 'max HP');
+            data.addColumn({ type: 'string', role: 'style' });
+            data.addColumn({ type: 'string', role: 'tooltip', 'p': { 'html': true } });
+
+
+            for (var i = 0; i < mcp.length; i++) {
+                data.addRow([mcp[i], mhp[i], typeColors[i], tooltipDisplay(names[i], types[i], mcp[i], mhp[i])]);
+            }
+
+            var options = {
+                legend: 'none',
+                chartArea: { width: '80%', height: '80%', backgroundColor: { stroke: '#000', strokeWidth: 1 } },
+                hAxis: { title: 'max CP' },
+                vAxis: { title: 'max HP' },
+                tooltip: {
+                    isHtml: true,
+                    textStyle: {
+                        fontSize: 16,
+                        bold: true,
+                    }
+                },
+                pointSize: 5
+            }
+
+            var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
+            chart.draw(data, options);
+
+        }
+
+
+
+    </script>
+
+
+
+</body>
+</html>
+
