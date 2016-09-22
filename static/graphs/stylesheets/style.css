@@ -1,0 +1,32 @@
+.graph {
+    width: 500px;
+    height: 500px;
+}
+
+.maths input[type="text"] {
+    border:none;
+    background-color:#efefef;
+    padding:5px;
+    margin-left:2px;
+}
+
+.maths input[type="text"]:focus {
+    border:none;
+    background-color: #cccccc;
+    padding:5px;
+    margin-left:2px;
+}
+
+.maths input[type="text"]:disabled {
+    background-color:#afafaf;
+}
+
+.maths .text-lg {
+    font-size:large;
+}
+
+.maths .display { 
+    width:100%; 
+    background-color:#efefef;
+    font-family: monospace;
+}
