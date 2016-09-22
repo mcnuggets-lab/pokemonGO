@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'df((h(ku1c=@by7+0+%n9+mf%vd-$5@st=1sbcnud+ba4fscc+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['mcnuggets23.pythonanywhere.com', 'localhost']
 
@@ -120,7 +120,7 @@ USE_TZ = True
 
 if DEBUG:
     STATIC_URL = '/static/'
-    #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    #STATIC_ROOT = '/home/mcnuggets23/pokemonGO/static'
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = '/home/mcnuggets23/pokemonGO/static'
