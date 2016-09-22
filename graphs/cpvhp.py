@@ -42,7 +42,7 @@ try:
 
 except:
     try:
-        df = pd.read_excel('/static/graphs/pokemonGO.xls')
+        df = pd.read_excel('static/graphs/pokemonGO.xls')
         data = df.drop(['Type 2', 'Image URL'], 1)
     
         names = data['Name'].tolist()
@@ -76,8 +76,6 @@ except:
             type_colors.append(type_dict[data["Type 1"][i]])
 
     except:
-        import os
-        print(os.path.dirname(os.path.realpath(__file__)))
         print("Cannot load excel file.")
         names = []
         types = []
