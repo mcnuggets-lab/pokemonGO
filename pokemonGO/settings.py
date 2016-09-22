@@ -25,7 +25,7 @@ SECRET_KEY = 'df((h(ku1c=@by7+0+%n9+mf%vd-$5@st=1sbcnud+ba4fscc+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', 'mcnuggets23.pythonanywhere.com']
 
 
 # Application definition
