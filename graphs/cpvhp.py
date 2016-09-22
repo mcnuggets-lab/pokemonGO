@@ -42,8 +42,8 @@ try:
 
 except:
     print("Cannot load excel file.")
-    names = ''
-    types = ''
-    mcp = ''
-    mhp = ''
-    type_colors = ''
+    names = []
+    types = []
+    mcp = []
+    mhp = []
+    type_colors = []
