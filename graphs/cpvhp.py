@@ -6,7 +6,7 @@ import pandas as pd
 #import seaborn as sns
 #from matplotlib import pyplot
 
-df = pd.read_excel('static/pokemonGO/pokemonGO.xls')
+df = pd.read_excel('static/graphs/pokemonGO.xls')
 data = df.drop(['Type 2', 'Image URL'], 1)
 
 names = data['Name'].tolist()
