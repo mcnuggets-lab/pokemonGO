@@ -64,9 +64,9 @@
 
 
 
-        function tooltipDisplay(name, type, CP, HP) {
+        function tooltipDisplay(no, name, type, CP, HP) {
             return '<div style="width:130px;font-size:16px;font-weight:bold;padding-left:5px;">' 
-                + name + '<br/>'
+                + '#' + no + ' ' + name + '<br/>'
                 + 'Type: ' + type + '<br/>'
                 + 'max CP: ' + CP + '<br/>' 
                 + 'max HP: ' + HP + '</div>';
@@ -82,7 +82,7 @@
 
 
             for (var i = 0; i < mcp.length; i++) {
-                data.addRow([mcp[i], mhp[i], typeColors[i], tooltipDisplay(names[i], types[i], mcp[i], mhp[i])]);
+                data.addRow([mcp[i], mhp[i], typeColors[i], tooltipDisplay(i+1, names[i], types[i], mcp[i], mhp[i])]);
             }
 
             var options = {
