@@ -64,10 +64,13 @@
 
 
 
-        function tooltipDisplay(no, name, type, CP, HP) {
+        function tooltipDisplay(no, name, type, typeColors, CP, HP) {
+
+            typeColors = typeColors || 'inherit';
+
             return '<div style="width:130px;font-size:16px;font-weight:bold;padding-left:5px;">' 
                 + '#' + no + ' ' + name + '<br/>'
-                + 'Type: ' + type + '<br/>'
+                + 'Type: <span style="color:' + typeColors + '">' + type + '</span><br/>'
                 + 'max CP: ' + CP + '<br/>' 
                 + 'max HP: ' + HP + '</div>';
         }
@@ -82,7 +85,7 @@
 
 
             for (var i = 0; i < mcp.length; i++) {
-                data.addRow([mcp[i], mhp[i], typeColors[i], tooltipDisplay(i+1, names[i], types[i], mcp[i], mhp[i])]);
+                data.addRow([mcp[i], mhp[i], typeColors[i], tooltipDisplay(i+1, names[i], types[i], typeColors[i], mcp[i], mhp[i])]);
             }
 
             var options = {
@@ -97,7 +100,13 @@
                         bold: true,
                     }
                 },
-                pointSize: 5
+                pointSize: 5,
+                /*trendlines: {
+                    0: {
+                        color: 'grey',
+                        tooltip: false
+                    }
+                }*/
             }
 
             var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
