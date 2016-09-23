@@ -22,6 +22,8 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^pokemonGO/', include('graphs.urls', namespace='pkmg')),
+    url(r'^home/', include('home.urls', namespace='home')),
     url(r'^admin/', admin.site.urls),
-    #url(r'^$', RedirectView.as_view(url='/static/')),
+    url(r'^about/', RedirectView.as_view(url='/home/about/')),
+    url(r'^$', RedirectView.as_view(url='/home/')),
 ]
